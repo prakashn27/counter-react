@@ -1,18 +1,40 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+const Result = (props) => {
+  return(
+    <div className="result">{props.counter}</div>
+  )
+};
+
+class Button extends Component {
+  handleClick = () => {
+    this.props.onClickFunction(this.props.incrementValue);
+  }
+  render() {
+    return(
+        <button onClick={this.handleClick}> +{this.props.incrementValue}</button>
+    )
+  }
+};
+
 class App extends Component {
+  state = { counter: 0 }
+  incrementCounter = (incrementValue) => {
+    this.setState((prevState) => ({
+      counter: prevState.counter + incrementValue
+    }));
+  };
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <Result counter={this.state.counter}/>
+        <div className="wrapper">
+          <Button incrementValue={1} onClickFunction={this.incrementCounter}/>
+          <Button incrementValue={2} onClickFunction={this.incrementCounter}/>
+          <Button incrementValue={3} onClickFunction={this.incrementCounter}/>
+          <Button incrementValue={5} onClickFunction={this.incrementCounter}/>
+        </div>
       </div>
     );
   }
