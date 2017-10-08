@@ -3,6 +3,7 @@
 Counter implementation done in using React Library
 ```
 
+## [Demo](https://prakashn27.github.io/counter-react/)
 ## Tools Used:
 - `create-react-app`
 
